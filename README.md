@@ -41,5 +41,5 @@ For the campaign as designed, these mods are also recommended:
 - Some contract parameters may need adjusting for better gameplay balance
 
 ## Credits
-- Original campaign design: Matt Lowne
-- Contract implementation: [Your Name]
+- Original campaign design: Ben Creasy
+
