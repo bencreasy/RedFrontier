@@ -1,0 +1,86 @@
+CONTRACT_TYPE
+{
+    name = RF0_2_Signals
+    title = Strange Signals II
+    
+    description = Mission Computer Terminal: Kerbal Space Center Science Division.\n\nFROM: Kerbal Space Center - Deep Space Monitoring Network\nTO: Mission Control\nSUBJECT: Anomalous Electromagnetic Patterns\n\nYour initial Magnetometer test has detected unexpected patterns in the background electromagnetic field. These readings don't match any known natural phenomenon in the Kerbin system and appear to vary in intensity depending on orbital position.\n\nTo properly isolate these signals from Kerbin's magnetic influence, we need to conduct additional testing in deep space. Please proceed with your vessel beyond Kerbin's sphere of influence and transmit new readings from interplanetary space.\n\nThe Science Council has upgraded this investigation to priority level BETA and is awaiting your findings with great interest.
+    
+    notes = To confirm the source of these anomalous readings, your probe must escape Kerbin's sphere of influence and transmit data from deep space.
+    
+    synopsis = Investigate mysterious signals by testing the Magnetometer in deep space.
+    
+    completedMessage = URGENT PRIORITY\n\nThe deep space Magnetometer readings have revealed something remarkable. Our analysis team has detected a distinct pattern of electromagnetic variations originating from the direction of the Duna system.\n\nThese patterns do not match any known natural phenomenon and appear to vary in intensity in ways that suggest they may be linked to some unknown property of Duna's composition.\n\nThe Science Council has upgraded this finding to priority level ALPHA and is now evaluating proposals for a dedicated mission to investigate the source of these unusual readings.
+
+    // Contract parameters
+    agent = Lowne Aerospace
+    group = RedFrontier
+    
+    // Contract requirements
+    minExpiry = 10000
+    maxExpiry = 100000
+    deadline = 365
+    cancellable = true
+    declinable = true
+    autoAccept = true
+    prestige = Trivial
+    maxCompletions = 1
+    maxSimultaneous = 1
+
+    // Rewards
+    advanceFunds = 15000.0
+    rewardFunds = 100000.0
+    rewardScience = 400.0
+    rewardReputation = 75.0
+
+    REQUIREMENT
+    {
+        name = CompleteContract
+        type = CompleteContract
+        contractType = RF0_1_Signals
+    }
+    
+    PARAMETER
+    {
+        name = DeepSpacePhase
+        type = VesselParameterGroup
+        title = Investigate Unusual Readings in Deep Space
+ 	targetBody = Sun 
+
+        PARAMETER
+        {
+            name = CollectScienceDeepSpace
+            type = CollectScience
+            experiment = magnetometer
+            targetBody = Sun
+            recoveryMethod = Transmit
+            title = Transmit Magnetometer readings from deep space
+	    hidden = True
+        }
+    }
+
+    BEHAVIOUR
+    {
+	name = DeepMessage1
+        type = Message
+	title = Mission Computer
+	message = Deep Space Test Completed... Standing by for orders...
+        CONDITION
+        {
+	    condition = PARAMETER_COMPLETED
+            parameter = DeepSpacePhase
+	}
+    }
+
+    BEHAVIOUR
+    {
+	name = DeepMessage2
+        type = Message
+	title = Mission Computer
+	message = Incoming Message...\n\nURGENT PRIORITY\n\nThe deep space Magnetometer readings have revealed something remarkable. Our analysis team has detected a distinct pattern of electromagnetic variations originating from the direction of the Duna system.\n\nThese patterns do not match any known natural phenomenon and appear to vary in intensity in ways that suggest they may be linked to some unknown property of Duna's composition.\n\nThe Science Council has upgraded this finding to priority level ALPHA and is now evaluating proposals for a dedicated mission to investigate the source of these unusual readings.
+        CONDITION
+        {
+	condition = CONTRACT_COMPLETED
+	}
+    }
+
+}
