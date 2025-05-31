@@ -59,7 +59,6 @@ The campaign employs a unique two-phase approach to mission execution:
 - Validate critical technologies before expensive interplanetary deployment
 - Fill time between optimal transfer windows
 - Sequential progression ensuring technology readiness
-- Examples: Communications relay testing, precision landing validation, KEV development
 
 **DEPLOYMENT MISSIONS (RF Series)**
 - Execute during optimal transfer windows using proven pathfinder technology
@@ -88,7 +87,7 @@ The campaign emphasizes realistic technology development through proven advancem
 **Mod Integration Timeline**
 - **Core Phase 1**: Stockalike Station Parts, Planetary Base Systems
 - **Phase 1 Completion**: Near Future Electrical unlocks
-- **Phase 2 Beginning**: Full Near Future suite deployment
+- **Phase 2**: Full Near Future suite deployment
 - **Phase 3**: Advanced propulsion and potential Interstellar mod integration
 
 ### **MISSION FLOW EXAMPLE - PHASE 1**
