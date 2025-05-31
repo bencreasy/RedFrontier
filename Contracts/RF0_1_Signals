@@ -1,0 +1,124 @@
+CONTRACT_TYPE
+{
+    name = RF0_1_Signals
+    title = Strange Signals
+    
+      description = Mission Computer Terminal: Kerbal Space Center Science Division.\n\nFROM: Kerbal Space Center - Experimental Technology Division\nTO: Mission Control\nSUBJECT: Prototype Magnetometer Testing\n\nOur science team has developed a prototype Magnetometer utilizing the latest advances in electronics technology. This experimental device is designed to detect and analyze magnetic field variations with unprecedented sensitivity.\n\nInitial lab tests have shown promising results, but we're getting way too much interference on the ground. To properly calibrate this new technology, we need to conduct field testing in various orbital environments around Kerbin.\n\nThe Science Council has authorized a special mission to deploy and test this prototype device, with the possibility of extended testing in deep space if initial results warrant further investigation.
+    
+//    notes = The Science Council requires:\n\n- A deep space probe equipped with advanced sensor packages\n- //Deployment beyond Kerbin's sphere of influence\n- Extended monitoring period to capture signal variations\n- //Capability to transmit findings back to KSC\n\nThis mission could potentially lead to a significant scientific //breakthrough.
+    
+    synopsis = Deploy and test the prototype Magnetometer in high Kerbin orbit.
+    
+completedMessage = URGENT TRANSMISSION\n\nThe initial Magnetometer readings have revealed something unexpected. Our analysis team has detected distinct patterns in the background electromagnetic field that don't match any known natural phenomenon in the Kerbin system.\n\nThese readings appear to vary in intensity depending on our orbital position, suggesting they might originate from beyond our immediate vicinity. The Science Council has authorized an immediate follow-up mission to investigate these anomalous readings in deep space, away from Kerbin's magnetic influence.
+
+    // Contract parameters
+    agent = Lowne Aerospace
+    group = RedFrontier
+    
+    // Contract requirements
+    minExpiry = 1000
+    maxExpiry = 100000
+    deadline = 365
+    cancellable = true
+    declinable = true
+    autoAccept = false
+    prestige = Trivial
+    maxCompletions = 1
+    maxSimultaneous = 1
+
+    // Rewards
+    advanceFunds = 10000.0
+    rewardFunds = 200000.0
+    rewardScience = 500.0
+    rewardReputation = 100.0
+
+    REQUIREMENT
+	{
+ 	   name = CanResearchTech
+ 	   type = CanResearchTech
+ 	   part = Magnetometer
+	   title = Magnetromy
+	}    
+
+   // PARAMETERS
+
+
+
+    PARAMETER
+    {
+    name = Sequence
+    type = Sequence
+\n
+        PARAMETER
+        {
+            name = KerbinTest1
+            type = VesselParameterGroup
+            title = Test Prototype Magnetometer in Low Kerbin Orbit
+            hideChildren = true
+
+            PARAMETER
+            {
+                name = CollectScience1
+                type = CollectScience
+                experiment = magnetometer
+                situation = InSpaceLow
+                targetBody = Kerbin
+                recoveryMethod = Transmit
+            }
+	}
+
+        PARAMETER
+        {
+            name = DeepSpace2
+            type = VesselParameterGroup
+            title = Phase 2: Repeat this test in High Kerban Orbit.
+            hideChildren = true
+        
+            PARAMETER
+            {
+                name = CollectScience2
+                type = CollectScience
+                experiment = magnetometer
+                situation = InSpaceHigh
+                targetBody = Kerbin
+                recoveryMethod = Transmit
+            }
+        }
+    }
+
+    BEHAVIOUR
+    {
+	name = TestMessage1
+        type = Message
+	title = Mission Computer
+	message = Low Orbit Test Completed... Plotting maneuver for the next test.
+
+        CONDITION
+        {
+	condition = PARAMETER_COMPLETED
+        parameter = KerbinTest1
+	}
+    }
+    BEHAVIOUR
+    {
+	name = TestMessage2
+        type = Message
+	title = Mission Computer
+	message = High Orbit Test Completed... Incoming Message...\n\n\nURGENT PRIORITY\n\nThe initial Magnetometer readings have revealed something unexpected. Our analysis team has detected distinct patterns in the background electromagnetic field that don't match any known natural phenomenon in the Kerbin system.\n\nThese readings appear to vary in intensity depending on our orbital position, suggesting they might originate from beyond our immediate vicinity.\n\n The Science Council has authorized an immediate follow-up mission to investigate these anomalous readings in deep space, away from Kerbin's magnetic influence.
+
+        CONDITION
+        {
+	condition = PARAMETER_COMPLETED
+        parameter = KerbinTest2
+	}
+    }
+
+    BEHAVIOUR
+    {
+        name = ExperimentalPart
+        type = ExperimentalPart
+        part = Magnetometer
+        unlockCriteria = CONTRACT_ACCEPTANCE
+    }
+
+}
