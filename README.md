@@ -16,11 +16,12 @@ To use this mod, you need:
 - Kerbal Space Program (tested with version 1.12.x)
 - Contract Configurator (version 2.11.2 or higher)
 - Module Manager (latest version recommended)
+- Planetary Base Systems
 
 For the campaign as designed, these mods are also recommended:
 - Near Future Technologies suite
 - Stockalike Station Parts
-- Planetary Base Systems
+
 
 ## Installation
 1. Install Contract Configurator and Module Manager following their installation guides
