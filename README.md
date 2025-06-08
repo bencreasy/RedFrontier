@@ -13,9 +13,9 @@ Early Development - Only Phase 1 (initial missions) implemented
 
 ## Dependencies
 To use this mod, you need:
-- Kerbal Space Program (tested with version 1.12.x)
-- Contract Configurator (version 2.11.2 or higher)
-- Module Manager (latest version recommended)
+- Kerbal Space Program 
+- Contract Configurator 
+- Module Manager 
 - Planetary Base Systems
 
 For the campaign as designed, these mods are also recommended:
